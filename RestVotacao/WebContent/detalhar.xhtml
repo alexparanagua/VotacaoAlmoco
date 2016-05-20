@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Detalhar Votos</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:commandButton id="botaoVoltar" value="Voltar" ajax="false"
+			action="#{votoController.voltar()}" />
+		<br />
+		<p:outputLabel value="Votos Computados" />
+		<p:dataTable value="#{votoController.listaVotos}" var="v" rows="5"
+			paginator="true" rowsPerPageTemplate="5,10" widgetVar="aaLista"
+			emptyMessage="Sem registros." style="font-size: small;"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			<p:column headerText="Matricula">
+				<h:outputText value="#{v.matricula}" />
+			</p:column>
+			<p:column headerText="Restaurante">
+				<h:outputText value="#{v.rest}" />
+			</p:column>
+			<p:column headerText="Dia">
+				<h:outputText value="#{v.dia}" />
+			</p:column>
+			<p:column headerText="Semana">
+				<h:outputText value="#{v.semana}" />
+			</p:column>
+		</p:dataTable>
+		<p:outputLabel value="Votos Totais Computados por Restaurante" />
+		<p:dataTable value="#{votoController.listaVotosTotal}" var="r"
+			rows="5" paginator="true" rowsPerPageTemplate="5,10"
+			widgetVar="aaLista" emptyMessage="Sem registros."
+			style="font-size: small;"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			>
+			<p:column headerText="Restaurante">
+				<h:outputText value="#{r.rest}" />
+			</p:column>
+			<p:column headerText="Dia">
+				<h:outputText value="#{r.dia}" />
+			</p:column>
+			<p:column headerText="Votos">
+				<h:outputText value="#{r.votos}" />
+			</p:column>
+		</p:dataTable>
+		<p:outputLabel value="Votos Totais Computados" />
+		<p:dataTable value="#{votoController.listaVotosSemana}" var="r"
+			rows="5" paginator="true" rowsPerPageTemplate="5,10"
+			widgetVar="aaLista" emptyMessage="Sem registros."
+			style="font-size: small;"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			<p:column headerText="Restaurante">
+				<h:outputText value="#{r.rest}" />
+			</p:column>
+			<p:column headerText="Dia">
+				<h:outputText value="#{r.dia}" />
+			</p:column>
+			<p:column headerText="Votos">
+				<h:outputText value="#{r.votos}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

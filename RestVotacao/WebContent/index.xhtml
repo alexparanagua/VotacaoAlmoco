@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>VOTACAO</title>
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="form1">
+		Dia <p:outputLabel value="#{votoController.diaSemanaAtual}" /> da <p:outputLabel
+			value="#{votoController.semanaAtual}" />ª semana.
+		<br />
+		<p:outputLabel value="Matricula: " />
+		<p:inputText value="#{votoController.matricula}" />
+		<p:panelGrid columns="2">
+			<p:selectOneRadio id="votoAtual"
+				value="#{votoController.restauranteEscolhido}" layout="grid"
+				columns="2">
+				<f:selectItems value="#{votoController.listaRestaurantes}" var="r"
+					itemLabel="#{r}" itemValue="#{r}" />
+			</p:selectOneRadio>
+		</p:panelGrid>
+		<p:commandButton id="botaoVotar" value="Votar"
+			action="#{votoController.votar()}" ajax="false" />
+		<p:commandButton id="botaoLimpar" value="Limpar"
+			action="#{votoController.limparCampos()}" ajax="false" />
+		<p:commandButton id="botaoDetalhar" value="Detalhar" ajax="false"
+			action="#{votoController.detalhar()}" />
+		<br />
+		<br />
+		<p:chart type="pie" model="#{votoController.pieModel1}"
+			style="width:400px;height:300px" />
+		<br />
+		<br />
+	</h:form>
+</h:body>
+</h:html>
